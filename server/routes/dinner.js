@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('dinner');
+  const Headline = "Saturday"
+  const menuItems = [
+    "Lasagna", "Salad"
+  ]
+  res.render('dinner', {
+     Headline: Headline, menuItems: menuItems
+  } );
 });
 
 module.exports = router;
