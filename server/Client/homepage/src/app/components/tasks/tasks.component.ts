@@ -30,10 +30,11 @@ export class TasksComponent {
             isDone: false
         }
 
-        this.taskService.addTask(newTask)
-        .subscribe(task => {
-            this.tasks.push(task);
-            this.title = '';
-        })
+        this.taskService.addTask(newTask);
+        let task = new Task;
+        task.title = newTask.title;
+        task.isDone = false;
+        this.tasks.push(task);
+        
     }
 }

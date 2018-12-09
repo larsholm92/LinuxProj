@@ -20,6 +20,8 @@ export class TaskService{
     }
 
     addTask(newTask){
+        console.log('Adding task');
+        console.log(newTask);
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
         headers.append('Access-Control-Allow-Origin', '*');
