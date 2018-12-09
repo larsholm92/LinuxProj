@@ -31,6 +31,7 @@ export class TasksComponent {
         }
 
         this.taskService.addTask(newTask);
+        
         let task = new Task;
         task.title = newTask.title;
         task.isDone = false;
