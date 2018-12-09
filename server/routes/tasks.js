@@ -26,7 +26,7 @@ router.get('/:id', function(req, res, next) {
    });
 
 /*Post single task*/
-router.post('/add'), function(req, res, next) {
+router.post('/add', function(req, res, next) {
     var task = req.body;
     if(!task.title || (task.isDone)){
         res.status(400);
@@ -44,7 +44,7 @@ router.post('/add'), function(req, res, next) {
         res.json(task);
         })
     }       
-}
+});
 //Delete task
 router.delete('/delete/:id', function(req, res, next) {
     db.tasks.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
