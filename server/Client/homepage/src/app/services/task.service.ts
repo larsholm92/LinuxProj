@@ -26,6 +26,9 @@ export class TaskService{
         headers.append('Content-Type', 'application/json');
         headers.append('Access-Control-Allow-Origin', '*');
         headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        return this.http.post('http://192.168.1.33:5001/task', JSON.stringify(newTask),{headers:headers});
-    }
+        headers.append('Access-Control-Allow-Methods', 'POST');
+        console.log('after headers');
+        return this.http.post('http://192.168.1.33:5001/tasks/add', newTask);
+        console.log('after post');
+     }
 }

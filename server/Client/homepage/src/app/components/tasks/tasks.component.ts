@@ -29,8 +29,8 @@ export class TasksComponent {
             title: this.title,
             isDone: false
         }
-
-        this.taskService.addTask(newTask);
+        console.log(newTask);
+        this.taskService.addTask(newTask).subscribe();
         
         let task = new Task;
         task.title = newTask.title;
