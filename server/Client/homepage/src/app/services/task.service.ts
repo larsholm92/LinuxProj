@@ -19,7 +19,7 @@ export class TaskService{
                
     }
 
-    addTask(newTask){
+    addTask(newTask: Task): Observable<Task>{
         console.log('Adding task');
         console.log(newTask);
         var headers = new HttpHeaders();
@@ -28,7 +28,12 @@ export class TaskService{
         headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         headers.append('Access-Control-Allow-Methods', 'POST');
         console.log('after headers');
-        return this.http.post('http://192.168.1.33:5001/tasks/add', newTask);
-        console.log('after post');
+        return this.http.post<Task>('http://192.168.1.33:5001/tasks/add', newTask);
+         
+     }
+     
+     deleteTask(id){
+         console.log('id: ' + id);
+         return this.http.delete('http://192.168.1.33:5001/tasks/delete/'+id)
      }
 }

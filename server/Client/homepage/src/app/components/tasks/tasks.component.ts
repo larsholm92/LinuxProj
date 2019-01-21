@@ -9,6 +9,7 @@ import {Task} from '../../../../../homepage/Task';
 export class TasksComponent {
     tasks: Task[];
     title: string;
+ 
 
 
 
@@ -30,12 +31,34 @@ export class TasksComponent {
             isDone: false
         }
         console.log(newTask);
-        this.taskService.addTask(newTask).subscribe();
-        
         let task = new Task;
+        task.title = newTask.title;
+        task.isDone = newTask.isDone;
+        this.taskService.addTask(task).subscribe(receivedTask => {
+        console.log('ReceivedTask: ' + receivedTask);
+        Object.assign(task, receivedTask);
+        });
+        
+        
         task.title = newTask.title;
         task.isDone = false;
         this.tasks.push(task);
+        console.log('Element pushed: '+ task);
         
+    }
+
+
+    deleteTask(id){
+        console.log('id in component: ' + id);
+        var tasks = this.tasks;
+        this.taskService.deleteTask(id).subscribe(data => {
+            for (var index = 0; index < tasks.length; index++){
+                if(tasks[index]._id== id)
+                {
+                    tasks.splice(index, 1);
+                }               
+            } 
+            
+        });   
     }
 }
