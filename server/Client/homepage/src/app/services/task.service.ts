@@ -15,7 +15,7 @@ export class TaskService{
     }
 
     getTasks(): Observable<Task[]> {
-        return this.http.get<Task[]>('http://192.168.1.33:5001/tasks');
+        return this.http.get<Task[]>('http://192.168.1.33:5000/tasks');
                
     }
 
@@ -28,12 +28,12 @@ export class TaskService{
         headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         headers.append('Access-Control-Allow-Methods', 'POST');
         console.log('after headers');
-        return this.http.post<Task>('http://192.168.1.33:5001/tasks/add', newTask);
+        return this.http.post<Task>('http://192.168.1.33:5000/tasks/add', newTask);
          
      }
      
      deleteTask(id){
          console.log('id: ' + id);
-         return this.http.delete('http://192.168.1.33:5001/tasks/delete/'+id)
+         return this.http.delete('http://192.168.1.33:5000/tasks/delete/'+id)
      }
 }
