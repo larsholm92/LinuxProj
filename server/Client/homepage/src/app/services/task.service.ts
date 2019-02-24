@@ -4,7 +4,7 @@ import{Task} from '../../../Task';
 import { Observable } from 'rxjs';
 import {HttpHeaders} from '@angular/common/http'
 
-
+const baseUrl = 'http://192.168.1.44:5000';
 
 @Injectable()
 export class TaskService{
@@ -15,7 +15,7 @@ export class TaskService{
     }
 
     getTasks(): Observable<Task[]> {
-        return this.http.get<Task[]>('http://192.168.1.35:5000/tasks');
+        return this.http.get<Task[]>(baseUrl+'/tasks');
                
     }
 
@@ -28,12 +28,12 @@ export class TaskService{
         headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         headers.append('Access-Control-Allow-Methods', 'POST');
         console.log('after headers');
-        return this.http.post<Task>('http://192.168.1.35:5000/tasks/add', newTask);
+        return this.http.post<Task>(baseUrl+'/tasks/add', newTask);
          
      }
      
      deleteTask(id){
          console.log('id: ' + id);
-         return this.http.delete('http://192.168.1.35:5000/tasks/delete/'+id)
+         return this.http.delete(baseUrl+'/tasks/delete/'+id)
      }
 }
