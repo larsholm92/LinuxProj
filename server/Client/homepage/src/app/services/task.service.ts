@@ -4,7 +4,7 @@ import{Task} from '../../../Task';
 import { Observable } from 'rxjs';
 import {HttpHeaders} from '@angular/common/http'
 
-const baseUrl = 'http://192.168.1.44:5000';
+const baseUrl = 'http://89.150.135.112:5000';
 
 @Injectable()
 export class TaskService{
